@@ -1,0 +1,25 @@
+{%extends 'base.html'%} {% block sidebar %}
+<div class="col-md-3">
+  <div class="list-group">
+    {% for item in categories %}
+    <a
+      href="{% url 'category' item.pk %}"
+      class="list-group-item list-group-item-action"
+    >
+      {{item.title}}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %} {% block content %}
+<div class="col-md-9">
+  <h1>{{title}}</h1>
+  {% for item in news%}
+  <h2>{{item.title}}</h2>
+  <p>{{item.content}}</p>
+  <span>{{item.created_at}}</span>
+  <img src="{{item.photo.url}}" alt="{{item.title}}" />
+  <hr />
+  {% endfor %}
+</div>
+{% endblock %}
